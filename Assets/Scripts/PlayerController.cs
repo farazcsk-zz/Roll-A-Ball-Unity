@@ -38,12 +38,16 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive (false);
 			count = count + 1;
 			SetCountText();
-        } else if (other.gameObject.CompareTag ("Wall"))
+        }
+    }
+
+	void OnCollisionEnter(Collision other){
+		if (other.gameObject.CompareTag ("Wall"))
 		{
 			count = count - 1;
 			SetCountText();
 		}
-    }
+	}
 
 	void SetCountText () 
 	{
