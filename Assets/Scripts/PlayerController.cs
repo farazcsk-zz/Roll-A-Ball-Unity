@@ -38,7 +38,11 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive (false);
 			count = count + 1;
 			SetCountText();
-        }
+        } else if (other.gameObject.CompareTag ("Wall"))
+		{
+			count = count - 1;
+			SetCountText();
+		}
     }
 
 	void SetCountText () 
@@ -48,6 +52,9 @@ public class PlayerController : MonoBehaviour {
 		if (count >= 12)
 		{
 			winText.text = "YOU WIN!";
+		} else if (count < 0){
+			winText.text = "YOU LOSE";
+			Application.Quit();
 		}
 	}
 }
